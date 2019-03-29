@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import fr.epsi.jeeProject.listeners.StartupListener;
+
 /**
  * Servlet implementation class TestServlet
  */
@@ -17,7 +19,8 @@ import org.apache.logging.log4j.Logger;
 public class TestServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     public static final Logger logger = LogManager.getLogger(TestServlet.class);
-
+    public static StartupListener monStartupListener = new StartupListener();
+    
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -31,7 +34,8 @@ public class TestServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
-        logger.info("Je suis dans ma Servlet");
+    	monStartupListener.contextInitialized(null);
+    	logger.info("Je suis dans ma Servlet");
         request.getRequestDispatcher("TestJSP.jsp").forward(request, response);
     }
 
