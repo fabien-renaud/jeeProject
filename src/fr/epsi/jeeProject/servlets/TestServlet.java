@@ -7,12 +7,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * Servlet implementation class TestServlet
  */
 @WebServlet("/TestServlet")
 public class TestServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    public static final Logger logger = LogManager.getLogger(TestServlet.class);
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -27,7 +31,7 @@ public class TestServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
-        Logger.info("Je suis dans ma Servlet");
+        logger.info("Je suis dans ma Servlet");
         request.getRequestDispatcher("TestJSP.jsp").forward(request, response);
     }
 
