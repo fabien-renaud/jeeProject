@@ -34,7 +34,6 @@ public class TestServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
-    	monStartupListener.contextInitialized(null);
     	logger.info("Je suis dans ma Servlet");
         request.getRequestDispatcher("TestJSP.jsp").forward(request, response);
     }
