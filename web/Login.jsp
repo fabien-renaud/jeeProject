@@ -10,7 +10,7 @@
 <form>
 	<label>
         <span>Mail : </span>
-        <input name="mail" type="text" required value="abc@email.com" />
+        <input name="mail" type="text" required placeholder="abc@email.com" />
     </label>
     <label>
         <span>Password : </span>
