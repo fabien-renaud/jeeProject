@@ -10,6 +10,14 @@ public class Utilisateur {
 	private Date dateCreation;
 	private Boolean admin;
 	
+	public Utilisateur() {
+		this.email = null;
+		this.nom = null;
+		this.passord = null;
+		this.dateCreation = null;
+		this.admin = null;
+	}
+	
 	public String getEmail() {
 		return email;
 	}

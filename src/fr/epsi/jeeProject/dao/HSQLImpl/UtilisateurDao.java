@@ -19,8 +19,8 @@ public class UtilisateurDao implements IUtilisateurDao {
 
 	@Override
 	public Utilisateur getUtilisateur(String email) {
-
-		Utilisateur myUser = null;
+		email = email == null ? email = "" : email;
+		Utilisateur myUser = new Utilisateur();
 		Connection con = null;
 		try {
 			con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost:9003", "SA", "");
@@ -32,11 +32,11 @@ public class UtilisateurDao implements IUtilisateurDao {
 				myUser.setEmail(rs.getString(1));
 				myUser.setNom(rs.getString(2));
 				myUser.setPassord(rs.getString(4));
+				myUser.setAdmin(rs.getBoolean(5));
 			}
 			rs.close();
 			con.close();
 		} catch (SQLException e) {
-			myUser = null;
 			logger.error("Error while getting user " + email, e);
 		} finally {
 			try {
