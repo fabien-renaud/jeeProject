@@ -1,4 +1,4 @@
-package fr.epsi.jeeProject.dao;
+package fr.epsi.jeeProjectTest.dao;
 
 import static org.junit.jupiter.api.Assertions.*;
 
