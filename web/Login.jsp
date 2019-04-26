@@ -7,7 +7,7 @@
     <title>Login</title>
 </head>
 <body>
-<form>
+<form method="POST" action="LoginServlet">
 	<label>
         <span>Mail : </span>
         <input name="mail" type="text" required placeholder="abc@email.com" />
@@ -16,8 +16,7 @@
         <span>Password : </span>
         <input name="password" type="password" required />
     </label>
-    <input type="button" name="login" id="login" value="Login">
-    <input type="button" name="reset" id="reset" value="reset">
+    <input type="submit" name="login" id="login" value="Login">
 </form>
 </body>
 </html>
