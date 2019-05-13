@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet {
         // TODO Auto-generated method stub
     	Utilisateur monUser = monUserDao.getUtilisateur(request.getParameter("mail"));
     	if(monUser.getPassord() != null && monUser.getPassord().equals(request.getParameter("password"))) {
-    		request.getRequestDispatcher("TestJSP.jsp").forward(request, response);
+    		request.getRequestDispatcher("./WEB-INF/TestJSP.jsp").forward(request, response);
     	}
         request.getRequestDispatcher("Login.jsp").forward(request, response);
     }
