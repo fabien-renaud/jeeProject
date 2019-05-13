@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<link rel="stylesheet" type="text/css" href="mystyle.css">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-    <h1>Hello World</h1>
-    <a href="./Login.jsp">login</a>
+	<div class="blocWhite">
+    <h1>Projet Jee</h1>
+    	<button onclick="location.href='./Login.jsp'" class="hotButton">
+    	<p>Sign In</p>
+    	</button>
+    	<button href="location.href='./Signup.jsp'" class="coldButton">
+    	<p>Sign Up</p>
+    	</button>
+    </div>
 </body>
 </html>

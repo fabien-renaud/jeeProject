@@ -3,7 +3,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="mystyle.css">
-    <meta charset="ISO-8859-1">
+    <meta charset="UTF-8">
     <title>Login</title>
 </head>
 <body>
