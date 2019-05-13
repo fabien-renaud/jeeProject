@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,6 +16,7 @@ import fr.epsi.jeeProject.dao.IUtilisateurDao;
 
 public class UtilisateurDao implements IUtilisateurDao {
 
+	private static final String SQL_INSERT = "INSERT INTO USERS (IS_ADMIN,PASSWORD,DATE_CREATION,NOM,EMAIL) VALUES (?,?,?,?,?)";
 	private static final Logger logger = LogManager.getLogger(UtilisateurDao.class);
 
 	@Override
@@ -53,7 +55,23 @@ public class UtilisateurDao implements IUtilisateurDao {
 
 	@Override
 	public void createUtilisateur(Utilisateur utilisateur) throws SQLException {
-// TODO Auto-generated method stub
+		Connection con = null;
+		try {
+			con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost:9003", "SA", "");
+			PreparedStatement preparedStatement = initialisationRequetePreparee( con, SQL_INSERT, true, utilisateur.getAdmin(), utilisateur.getPassord(), utilisateur.getDateCreation(),utilisateur.getNom(),utilisateur.getEmail());
+	        int statut = preparedStatement.executeUpdate();
+			con.close();
+		} catch (SQLException e) {
+			logger.error("Error while creating user", e);
+		} finally {
+			try {
+				if (con != null && !con.isClosed()) {
+					con.close();
+				}
+			} catch (Exception e) {
+				logger.warn("Error while closing connection");
+			}
+		}
 
 	}
 
@@ -67,6 +85,18 @@ public class UtilisateurDao implements IUtilisateurDao {
 	public void deleteUtilisateur(Utilisateur utilisateur) throws SQLException {
 // TODO Auto-generated method stub
 
+	}
+	
+	/*
+	 * Initialise la requête préparée basée sur la connexion passée en argument,
+	 * avec la requête SQL et les objets donnés.
+	 */
+	public static PreparedStatement initialisationRequetePreparee( Connection connexion, String sql, boolean returnGeneratedKeys, Object... objets ) throws SQLException {
+	    PreparedStatement preparedStatement = connexion.prepareStatement( sql, returnGeneratedKeys ? Statement.RETURN_GENERATED_KEYS : Statement.NO_GENERATED_KEYS );
+	    for ( int i = 0; i < objets.length; i++ ) {
+	        preparedStatement.setObject( i + 1, objets[i] );
+	    }
+	    return preparedStatement;
 	}
 
 }

@@ -16,8 +16,17 @@ public class Utilisateur {
 		this.passord = null;
 		this.dateCreation = null;
 		this.admin = null;
-	}
+	}	
 	
+	public Utilisateur(String email, String nom, String passord, Date dateCreation, Boolean admin) {
+		super();
+		this.email = email;
+		this.nom = nom;
+		this.passord = passord;
+		this.dateCreation = dateCreation;
+		this.admin = admin;
+	}
+
 	public String getEmail() {
 		return email;
 	}
