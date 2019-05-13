@@ -42,8 +42,9 @@ public class LoginServlet extends HttpServlet {
     	Utilisateur monUser = monUserDao.getUtilisateur(request.getParameter("mail"));
     	if(monUser.getPassord() != null && monUser.getPassord().equals(request.getParameter("password"))) {
     		request.getRequestDispatcher("./WEB-INF/TestJSP.jsp").forward(request, response);
+    	} else {
+    		request.getRequestDispatcher("Login.jsp").forward(request, response);
     	}
-        request.getRequestDispatcher("Login.jsp").forward(request, response);
     }
 
     /**
