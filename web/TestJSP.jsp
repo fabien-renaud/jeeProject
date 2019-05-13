@@ -6,6 +6,7 @@
     <title>My JSP Page</title>
 </head>
 <body>
-<% out.println("Coucou"); %>
+<% out.println("Coucou");
+out.println(session.getAttribute("mail"));%>
 </body>
 </html>
