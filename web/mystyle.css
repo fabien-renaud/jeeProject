@@ -27,6 +27,7 @@ form {
     width: 38%;
     margin: 0 auto;
     padding-bottom: 10px;
+    font-size:3.5em;
 }
 
 .hotButton{
@@ -37,6 +38,7 @@ form {
     border: none;
     cursor: pointer;
     width: 100%;
+    font-size:1.2em;
 }
 .hotButton:hover{
     background-color: white;
@@ -52,6 +54,7 @@ form {
     border: 1px solid #53af57;
     cursor: pointer;
     width: 100%;
+    font-size:1.2em;
 }
 .coldButton:hover{
 	background-color: #53af57;

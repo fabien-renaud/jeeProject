@@ -6,7 +6,13 @@
     <title>My JSP Page</title>
 </head>
 <body>
+<<<<<<< HEAD:web/TestJSP.jsp
 <% out.println("Coucou");
 out.println(session.getAttribute("mail"));%>
+=======
+<% out.println("Coucou"); %>
+<br/>
+	<a href="SignOut.jsp">sign out</a>
+>>>>>>> master:web/WEB-INF/TestJSP.jsp
 </body>
 </html>
