@@ -11,7 +11,7 @@
     	<button onclick="location.href='./Login.jsp'" class="hotButton">
     	<p>Sign In</p>
     	</button>
-    	<button href="location.href='./Signup.jsp'" class="coldButton">
+    	<button onclick="location.href='./signup.jsp'" class="coldButton">
     	<p>Sign Up</p>
     	</button>
     </div>
