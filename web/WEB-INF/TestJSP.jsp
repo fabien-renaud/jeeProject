@@ -7,5 +7,7 @@
 </head>
 <body>
 <% out.println("Coucou"); %>
+<br/>
+	<a href="SignOut.jsp">sign out</a>
 </body>
 </html>
