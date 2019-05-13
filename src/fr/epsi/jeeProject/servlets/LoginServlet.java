@@ -39,14 +39,13 @@ public class LoginServlet extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
     	HttpSession session = request.getSession(); 
     	if (session.getAttribute("mail") != null) {
         	logger.info("Utilisateur déjà connecté, redirection en cours");
     		response.sendRedirect(request.getContextPath() + "/TestServlet");
     	} else {
         	logger.info("Page de Login");
-    		request.getRequestDispatcher("Login.jsp").forward(request, response);
+    		request.getRequestDispatcher("./WEB-INF/Login.jsp").forward(request, response);
     	}
     }
 

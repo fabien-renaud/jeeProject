@@ -42,7 +42,7 @@ public class TestServlet extends HttpServlet {
     		response.sendRedirect(request.getContextPath() + "/LoginServlet");
         } else {
         	logger.info("Utilisateur connecté");
-            request.getRequestDispatcher("TestJSP.jsp").forward(request, response);        	
+            request.getRequestDispatcher("./WEB-INF/TestJSP.jsp").forward(request, response);        	
         }
     }
 

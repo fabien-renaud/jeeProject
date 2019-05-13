@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -42,7 +43,14 @@ public class SignUp extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+    	logger.info("Page de SignUp");
+		request.getRequestDispatcher("./WEB-INF/signup.jsp").forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("mail");
 		String nom = request.getParameter("nom");
 		String passord = request.getParameter("password");
@@ -56,21 +64,15 @@ public class SignUp extends HttpServlet {
 			} catch (SQLException e) {
 				logger.error("User non créée");
 				e.printStackTrace();
+	    		response.sendRedirect(request.getContextPath() + "/SignUp");
 			}
-			request.getRequestDispatcher("./WEB-INF/TestJSP.jsp").forward(request, response);
-		}else {
-			request.getRequestDispatcher("signup.jsp").forward(request, response);
+	    	HttpSession session = request.getSession(); 
+            session.setAttribute("mail", email);
+    		response.sendRedirect(request.getContextPath() + "/TestServlet");
+		} else {
+			logger.error("Données non complètes");
+    		response.sendRedirect(request.getContextPath() + "/SignUp");
 		}
-        
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		logger.info("est dan sla servlet signup");
-        doGet(request, response);
 	}
 
 }
