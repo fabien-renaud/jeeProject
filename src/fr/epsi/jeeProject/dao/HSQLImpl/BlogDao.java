@@ -136,21 +136,19 @@ public class BlogDao implements IBlogDao
 	
 	public Integer createBlog(Blog blog) throws SQLException
 	{
-		Blog myBlog = null;
 		Connection con = null;
 		try {
 			con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost:9003", "SA", "");
-			PreparedStatement ps = con.prepareStatement("INSERT INTO BLOG VALUES (?, ?, ?, ?, CURDATE(), CURDATE(), ?)");
-			ps.setInt(1, blog.getId());
-			ps.setString(2, blog.getTitre());
-			ps.setString(3, blog.getDescription());
-			ps.setString(4, blog.getCreateur().getEmail());
-			ps.setInt(5, 1);
+			PreparedStatement ps = con.prepareStatement("INSERT INTO BLOG (TITRE, DESCRIPTION, EMAIL, DATE_CREATION, DATE_MODIFICATION, STATUT) VALUES (?, ?, ?, CURDATE(), CURDATE(), ?)");
+			ps.setString(1, blog.getTitre());
+			ps.setString(2, blog.getDescription());
+			ps.setString(3, blog.getCreateur().getEmail());
+			ps.setInt(4, 1);
 			logger.warn(ps.toString());
 			ps.executeUpdate();
 			con.close();
 		} catch (SQLException e) {
-			myBlog = null;
+			blog = null;
 			logger.error("Error while getting blog ", e);
 		}
 		finally {

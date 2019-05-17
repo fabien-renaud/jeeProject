@@ -2,7 +2,6 @@ body{
     background: #313238;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", sans-serif;
     color: white;
-    overflow-y: hidden;
     margin: 0; padding: 0;
 }
 .container {
@@ -131,6 +130,14 @@ form {
 .float-right{
 	float: right;
 	right: 0;
+}
+.buttonVoirArticle {
+	outline: none;
+	color: white;
+	background-color: #53af57;
+	padding: 10px;
+	border: 0;
+	cursor: pointer;
 }
 
 /* Full-width inputs */

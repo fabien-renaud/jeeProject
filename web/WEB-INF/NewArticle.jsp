@@ -22,9 +22,8 @@
         <input name="description" type="text" required />
     </label>
     <input type="submit" name="NewArticle" id="NewArticle" value="Créer mon article !">
-		
-	<a href="./home">Retour à la liste des articles</a>
 </form>
+<a href="./home">Retour à la liste des articles</a>
 </div>
 </body>
 </html>

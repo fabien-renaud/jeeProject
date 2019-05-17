@@ -20,14 +20,15 @@
 		<%
 		List<Blog> mesBlog = (List<Blog>) request.getAttribute("mesBlog");
 		for(Blog monBlog : mesBlog) {
-			out.println("<a href=\"./article?id=" + monBlog.getId() + "\"><div class=\"blocWhite\"><h3>" + monBlog.getTitre() + "</h3><p>"
-				+ monBlog.getCreateur().getEmail() + " - " + monBlog.getDateCreation() + "</p><p>"
-				+ monBlog.getDescription().substring(0,200) + "...</p>" 
-				+ "</br></br><p>Pour voir l'article complet, cliquez ici !</p></div></a>");
+			out.println("<a href=\"./article?id=" + monBlog.getId() + "\"><div class=\"blocWhite\">");
+			out.println("<h3>" + monBlog.getTitre() + "</h3>");
+			out.println("<p>" + monBlog.getCreateur().getEmail() + " - " + monBlog.getDateCreation() + "</p>");
+			out.println("<p>" + monBlog.getDescription() + "...</p>");
+			out.println("</br></br><button class=\"buttonVoirArticle\">Pour voir l'article complet, cliquez ici !</button></div></a>");
 		}
 		%>
 		<br/>
-		<a href="./new-article">Créer un nouvel article</a>
+		<a href="./new-article" style="padding-bottom: 30px;">Créer un nouvel article</a>
 	</div>
 </body>
 </html>
