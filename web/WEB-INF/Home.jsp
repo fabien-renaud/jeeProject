@@ -2,13 +2,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="ISO-8859-1">
+	<link rel="stylesheet" type="text/css" href="mystyle.css">
+    <meta charset="UTF-8">
     <title>My JSP Page</title>
 </head>
 <body>
+<div class="container">
 	<% out.println("Coucou");
 	out.println(session.getAttribute("mail"));%>
 	<br/>
-	<a href="SignOut">Sign out</a>
+    <button onclick="location.href='SignOut'" class="signOutButton">Sign out</button>
+</div>
 </body>
 </html>

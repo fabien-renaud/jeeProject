@@ -6,7 +6,7 @@
     <title>Title</title>
 </head>
 <body>
-	<div class="blocWhite">
+	<div class="blocWhite container">
     <h1>Projet Jee</h1>
     	<button onclick="location.href='./Login'" class="hotButton">
     	<p>Sign In</p>

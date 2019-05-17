@@ -7,6 +7,7 @@
     <title>Login</title>
 </head>
 <body>
+<div class="container">
 <form method="POST" action="Login">
 	<label>
         <span>Mail : </span>
@@ -18,5 +19,6 @@
     </label>
     <input type="submit" name="login" id="login" value="Login">
 </form>
+</div>
 </body>
 </html>
