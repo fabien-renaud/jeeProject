@@ -11,12 +11,16 @@ import javax.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import fr.epsi.jeeProject.beans.Blog;
+import fr.epsi.jeeProject.dao.HSQLImpl.BlogDao;
+import java.util.List;
+
 import fr.epsi.jeeProject.listeners.StartupListener;
 
 /**
  * Servlet implementation class TestServlet
  */
-@WebServlet("/Home")
+@WebServlet("/home")
 public class HomeServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     public static final Logger logger = LogManager.getLogger(HomeServlet.class);
@@ -37,9 +41,12 @@ public class HomeServlet extends HttpServlet {
         HttpSession session = request.getSession();
         if(session.getAttribute("mail") == null){
         	logger.info("Utilisateur non connecté, redirection en cours");
-    		response.sendRedirect(request.getContextPath() + "/Login");
+    		response.sendRedirect(request.getContextPath() + "/login");
         } else {
         	logger.info("Utilisateur connecté");
+    		BlogDao monBlogDao = new BlogDao();
+    		List<Blog> mesBlog = monBlogDao.getAllBlogs();
+    		request.setAttribute("mesBlog", mesBlog);
             request.getRequestDispatcher("./WEB-INF/Home.jsp").forward(request, response);        	
         }
     }

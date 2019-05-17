@@ -24,7 +24,7 @@ import fr.epsi.jeeProject.listeners.StartupListener;
 /**
  * Servlet implementation class SignUp
  */
-@WebServlet("/SignUp")
+@WebServlet("/signup")
 public class SignUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static final Logger logger = LogManager.getLogger(LoginServlet.class);
@@ -63,14 +63,14 @@ public class SignUpServlet extends HttpServlet {
 				logger.info("Utilisateur créé");
 			} catch (SQLException e) {
 				logger.error("Utilisateur non créé", e);
-	    		response.sendRedirect(request.getContextPath() + "/SignUp");
+	    		response.sendRedirect(request.getContextPath() + "/signup");
 			}
 	    	HttpSession session = request.getSession();
             session.setAttribute("mail", email);
-    		response.sendRedirect(request.getContextPath() + "/Home");
+    		response.sendRedirect(request.getContextPath() + "/home");
 		} else {
 			logger.error("Utilisateur non crée, formulaire incomplet");
-    		response.sendRedirect(request.getContextPath() + "/SignUp");
+    		response.sendRedirect(request.getContextPath() + "/signup");
 		}
 	}
 

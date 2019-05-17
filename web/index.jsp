@@ -6,14 +6,16 @@
     <title>Title</title>
 </head>
 <body>
-	<div class="blocWhite container">
-    <h1>Projet Jee</h1>
-    	<button onclick="location.href='./Login'" class="hotButton">
-    	<p>Sign In</p>
-    	</button>
-    	<button onclick="location.href='./SignUp'" class="coldButton">
-    	<p>Sign Up</p>
-    	</button>
+	<div class="container login-form">
+    	<h1>Bienvenue</h1>
+    	<div>
+	    	<button onclick="location.href='./login'" class="login-button">
+	    		<span>Se connecter</span>
+	    	</button>
+	    	<button onclick="location.href='./signup'" class="login-button">
+	    		<span>S'inscrire</span>
+	    	</button>
+    	</div>
     </div>
 </body>
 </html>

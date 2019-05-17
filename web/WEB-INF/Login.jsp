@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container">
-<form method="POST" action="Login">
+<form method="POST" action="login">
 	<label>
         <span>Mail : </span>
         <input name="mail" type="text" required placeholder="abc@email.com" />

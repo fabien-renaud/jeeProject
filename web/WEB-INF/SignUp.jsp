@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container">
-<form method="POST" action="SignUp">
+<form method="POST" action="signup">
 	<label>
         <span>Mail : </span>
         <input name="mail" type="text" required placeholder="abc@email.com" />

@@ -20,7 +20,7 @@ import fr.epsi.jeeProject.listeners.StartupListener;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/Login")
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     public static final Logger logger = LogManager.getLogger(LoginServlet.class);
@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
     	HttpSession session = request.getSession(); 
     	if (session.getAttribute("mail") != null) {
         	logger.info("Utilisateur déjà connecté, redirection en cours");
-    		response.sendRedirect(request.getContextPath() + "/Home");
+    		response.sendRedirect(request.getContextPath() + "/home");
     	} else {
     		request.getRequestDispatcher("./WEB-INF/Login.jsp").forward(request, response);
     	}
@@ -58,10 +58,10 @@ public class LoginServlet extends HttpServlet {
     	if(monUser.getPassord() != null && monUser.getPassord().equals(request.getParameter("password"))) {
         	logger.info("Connexion OK, redirection en cours"); 
             session.setAttribute("mail", request.getParameter("mail"));
-    		response.sendRedirect(request.getContextPath() + "/Home");
+    		response.sendRedirect(request.getContextPath() + "/home");
     	} else {
         	logger.error("Connexion KO, veuillez réessayer");
-    		response.sendRedirect(request.getContextPath() + "/Login");
+    		response.sendRedirect(request.getContextPath() + "/login");
     	}
     }
 

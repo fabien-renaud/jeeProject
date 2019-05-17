@@ -1,19 +1,74 @@
 body{
     background: #313238;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", sans-serif;
-    font-size: 1.6em;
     color: white;
     overflow-y: hidden;
+    margin: 0; padding: 0;
 }
 .container {
     padding: 0 15px;
     margin: auto;
 }
-
 @media (min-width: 1200px){
     .container {
         width: 1170px;
     }
+    .login-form {
+		max-width: 400px;
+		margin: auto !important;
+		margin-top: 50px !important;
+    }
+}
+a,a:link,a:hover,a:active,a:visited {
+	color: white;
+}
+.login-form {
+	background: rgb(255,255,255,0.2);
+	border-radius: 25px;
+	padding: 50px 30px;
+	padding-top: 0;
+	margin: 100px;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+.login-form div {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+}
+.login-form div button {
+	position: relative;
+	background: #313238;
+	font-size: 1.5em;
+	width: 45%;
+	border: 0;
+	border-radius: 25px;
+	cursor: pointer;
+	vertical-align: middle;
+	transition-duration: 0.1s;
+	blur: none;
+	outline: none;
+}
+.login-form div button:hover  {
+	background: #BBB;
+}
+.login-form div button span {
+	color: white;
+	position:  absolute;
+	top: 40%;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+.login-form div button:hover span {
+	color: #424350;
+}
+.login-form div button:after {
+	content:"";
+	display: block;
+	padding-bottom: 100%;
 }
 /* Bordered form */
 form {
@@ -25,7 +80,6 @@ form {
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 .blocWhite{
-	width:80%;
 	font-size: 0.6em;
 	color: #313238;
     padding: 30px;
@@ -33,7 +87,7 @@ form {
     background: #fff;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);	
     margin-top: 50px;
-    text-align:center;
+    text-align: center;
 }
 #container h1{
     width: 38%;
@@ -74,21 +128,9 @@ form {
     border: none;
     opacity:0.7;
 }
-.signOutButton{
-    background-color: #ed3835;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 200px;
-    font-size:1em;
-}
-.signOutButton:hover{
-    background-color: white;
-    color: #53af57;
-    border: 1px solid #53af57;
-    opacity:0.7;
+.float-right{
+	float: right;
+	right: 0;
 }
 
 /* Full-width inputs */

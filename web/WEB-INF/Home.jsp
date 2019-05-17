@@ -12,22 +12,22 @@
 </head>
 <body>
 	<div class="container">
-	<button onclick="location.href='SignOut'" class="signOutButton">Sign
-			out</button>
+		<div>
+			<% out.println("<p style=\"display: inline-block\">Bienvenue " + session.getAttribute("mail") + "</p>"); %>
+			<a href="./signout" class="float-right">Sign out ></a>
+		</div>
+		<h2>Liste des articles</h2>
 		<%
-			out.println("Coucou");
-			out.println(session.getAttribute("mail"));
+		List<Blog> mesBlog = (List<Blog>) request.getAttribute("mesBlog");
+		for(Blog monBlog : mesBlog) {
+			out.println("<a href=\"./article?id=" + monBlog.getId() + "\"><div class=\"blocWhite\"><h3>" + monBlog.getTitre() + "</h3><p>"
+				+ monBlog.getCreateur().getEmail() + " - " + monBlog.getDateCreation() + "</p><p>"
+				+ monBlog.getDescription().substring(0,200) + "...</p>" 
+				+ "</br></br><p>Pour voir l'article complet, cliquez ici !</p></div></a>");
+		}
 		%>
-		<br />
-		<%
-			BlogDao monBlogDao = new BlogDao();
-			List<Blog> mesBlog = monBlogDao.getAllBlogs();
-			for(Blog monBlog : mesBlog){
-				out.println("<br><div class=\"blocWhite\"><h3>" + monBlog.getTitre() + "</h3><p>"
-					+ monBlog.getDescription() + "</p></div>");
-			}
-		%>
-		
+		<br/>
+		<a href="./new-article">Créer un nouvel article</a>
 	</div>
 </body>
 </html>

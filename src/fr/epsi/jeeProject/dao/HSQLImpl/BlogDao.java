@@ -35,6 +35,7 @@ public class BlogDao implements IBlogDao
 				myBlog.setId(rs.getInt(1));
 				myBlog.setTitre(rs.getString(2));
 				myBlog.setDescription(rs.getString(3));
+				myBlog.setCreateur(utilisateur);
 				myBlog.setDateCreation(rs.getDate(5));
 				resultat.add(myBlog);
 			}
@@ -66,10 +67,13 @@ public class BlogDao implements IBlogDao
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM BLOG");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
+				Utilisateur utilisateur = new Utilisateur();
+				utilisateur.setEmail(rs.getString(4));
 				myBlog = new Blog();
 				myBlog.setId(rs.getInt(1));
 				myBlog.setTitre(rs.getString(2));
 				myBlog.setDescription(rs.getString(3));
+				myBlog.setCreateur(utilisateur);
 				myBlog.setDateCreation(rs.getDate(5));
 				resultat.add(myBlog);
 			}
@@ -102,10 +106,13 @@ public class BlogDao implements IBlogDao
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
+				Utilisateur utilisateur = new Utilisateur();
+				utilisateur.setEmail(rs.getString(4));
 				myBlog = new Blog();
 				myBlog.setId(rs.getInt(1));
 				myBlog.setTitre(rs.getString(2));
 				myBlog.setDescription(rs.getString(3));
+				myBlog.setCreateur(utilisateur);
 				myBlog.setDateCreation(rs.getDate(5));
 				return myBlog;
 			}
@@ -163,7 +170,28 @@ public class BlogDao implements IBlogDao
 	}
 
 	public void deleteBlog(Blog blog) throws SQLException {
-		// TODO
+		Blog myBlog = null;
+		Connection con = null;
+		try {
+			con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost:9003", "SA", "");
+			PreparedStatement ps = con.prepareStatement("DELETE FROM BLOG WHERE ID=?");
+			ps.setInt(1, blog.getId());
+			logger.warn(ps.toString());
+			ps.executeUpdate();
+			con.close();
+		} catch (SQLException e) {
+			myBlog = null;
+			logger.error("Error while deleting blog ", e);
+		}
+		finally {
+			try {
+				if (con != null && !con.isClosed()) {
+					con.close();
+				}
+			} catch (Exception e) {
+				logger.warn("Error while closing connection");
+			}
+		}
 	}
 
 	public void addReponse(Blog blog, Reponse reponse) throws SQLException {

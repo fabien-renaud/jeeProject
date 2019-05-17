@@ -48,4 +48,17 @@ class BlogDaoTest {
 		assertEquals(monBlog.getDescription(), "madescription");
 	}
 
+	@Test
+	void testDELBlog() throws SQLException {
+		Utilisateur monUser= new Utilisateur("contact@aquasys.fr", "contact", "pass", new Date(2019,05,17), true);
+		Blog myBlog = new Blog(9999,"titre","madescription",monUser,new Date(2019,05,17),new Date(2019,05,17));
+
+		monBlogDao.createBlog(myBlog);
+
+		monBlog = monBlogDao.getBlog(9999);
+		assertEquals(monBlog.getTitre(), "titre");
+		monBlogDao.deleteBlog(9999);
+		monBlog = monBlogDao.getBlog(9999);
+		assertEquals(monBlog, null);
+	}
 }
