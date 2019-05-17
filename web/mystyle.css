@@ -1,14 +1,24 @@
 body{
-    background: #000000;
+    background: #313238;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", sans-serif;
+    font-size: 1.6em;
+    color: white;
+    overflow-y: hidden;
 }
-#container{
-    width:100%;
-    margin:0 auto;
-    margin-top:10%;
+.container {
+    padding: 0 15px;
+    margin: auto;
+}
+
+@media (min-width: 1200px){
+    .container {
+        width: 1170px;
+    }
 }
 /* Bordered form */
 form {
-    width:80%;
+	color: #222222;
+	margin-top: 50px;
     padding: 30px;
     border: 1px solid #f1f1f1;
     background: #fff;
@@ -16,11 +26,13 @@ form {
 }
 .blocWhite{
 	width:80%;
+	font-size: 0.6em;
+	color: #313238;
     padding: 30px;
     border: 1px solid #f1f1f1;
     background: #fff;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);	
-    margin: 25vh auto;
+    margin-top: 50px;
     text-align:center;
 }
 #container h1{
@@ -38,7 +50,7 @@ form {
     border: none;
     cursor: pointer;
     width: 100%;
-    font-size:1.2em;
+    font-size:2em;
 }
 .hotButton:hover{
     background-color: white;
@@ -54,12 +66,28 @@ form {
     border: 1px solid #53af57;
     cursor: pointer;
     width: 100%;
-    font-size:1.2em;
+    font-size: 2em;
 }
 .coldButton:hover{
 	background-color: #53af57;
     color: white;
     border: none;
+    opacity:0.7;
+}
+.signOutButton{
+    background-color: #ed3835;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 200px;
+    font-size:1em;
+}
+.signOutButton:hover{
+    background-color: white;
+    color: #53af57;
+    border: 1px solid #53af57;
     opacity:0.7;
 }
 
@@ -71,6 +99,7 @@ input[type=text], input[type=password] {
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    font-size: 1em;
 }
 
 /* Set a style for all buttons */
@@ -82,6 +111,7 @@ input[type=submit] {
     border: none;
     cursor: pointer;
     width: 100%;
+    font-size: 1em;
 }
 input[type=submit]:hover {
     background-color: white;
