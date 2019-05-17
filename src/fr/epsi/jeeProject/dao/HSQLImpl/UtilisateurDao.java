@@ -59,7 +59,9 @@ public class UtilisateurDao implements IUtilisateurDao {
 		try {
 			con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost:9003", "SA", "");
 			PreparedStatement preparedStatement = initialisationRequetePreparee( con, SQL_INSERT, true, utilisateur.getAdmin(), utilisateur.getPassord(), utilisateur.getDateCreation(),utilisateur.getNom(),utilisateur.getEmail());
-	        int statut = preparedStatement.executeUpdate();
+	        logger.warn(preparedStatement);
+			int statut = preparedStatement.executeUpdate();
+			logger.info("Utilisateur créé", statut);
 			con.close();
 		} catch (SQLException e) {
 			logger.error("Error while creating user", e);
@@ -69,7 +71,7 @@ public class UtilisateurDao implements IUtilisateurDao {
 					con.close();
 				}
 			} catch (Exception e) {
-				logger.warn("Error while closing connection");
+				logger.error("Error while closing connection", e);
 			}
 		}
 

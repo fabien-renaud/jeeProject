@@ -19,7 +19,7 @@ import fr.epsi.jeeProject.listeners.StartupListener;
 @WebServlet("/SignOut")
 public class SignOutServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    public static final Logger logger = LogManager.getLogger(TestServlet.class);
+    public static final Logger logger = LogManager.getLogger(HomeServlet.class);
     public static StartupListener monStartupListener = new StartupListener();
     
     /**
@@ -27,18 +27,16 @@ public class SignOutServlet extends HttpServlet {
      */
     public SignOutServlet() {
         super();
-        // TODO Auto-generated constructor
     }
 
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
-    	logger.info("Page de Sign Out");
+    	logger.info("GET SignOut");
         HttpSession session = request.getSession();
         session.invalidate();
     	logger.info("Redirection vers la page de Login");
-		response.sendRedirect(request.getContextPath() + "/LoginServlet");
+		response.sendRedirect(request.getContextPath() + "/Login");
     }
 }

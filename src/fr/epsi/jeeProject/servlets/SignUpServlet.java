@@ -22,10 +22,10 @@ import fr.epsi.jeeProject.dao.HSQLImpl.UtilisateurDao;
 import fr.epsi.jeeProject.listeners.StartupListener;
 
 /**
- * Servlet implementation class signUp
+ * Servlet implementation class SignUp
  */
 @WebServlet("/SignUp")
-public class SignUp extends HttpServlet {
+public class SignUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static final Logger logger = LogManager.getLogger(LoginServlet.class);
     public static StartupListener monStartupListener = new StartupListener();
@@ -34,23 +34,23 @@ public class SignUp extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SignUp() {
+    public SignUpServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	logger.info("Page de SignUp");
-		request.getRequestDispatcher("./WEB-INF/signup.jsp").forward(request, response);
+    	logger.info("GET SignUp");
+		request.getRequestDispatcher("./WEB-INF/SignUp.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		logger.info("POST SignUp");
 		String email = request.getParameter("mail");
 		String nom = request.getParameter("nom");
 		String passord = request.getParameter("password");
@@ -60,17 +60,16 @@ public class SignUp extends HttpServlet {
 		if(!email.isEmpty() && !nom.isEmpty() && !passord.isEmpty()) {
 			try {
 				monUserDao.createUtilisateur(new Utilisateur(email,nom,passord,dateCreation,admin));
-				logger.info("User créée");
+				logger.info("Utilisateur créé");
 			} catch (SQLException e) {
-				logger.error("User non créée");
-				e.printStackTrace();
+				logger.error("Utilisateur non créé", e);
 	    		response.sendRedirect(request.getContextPath() + "/SignUp");
 			}
-	    	HttpSession session = request.getSession(); 
+	    	HttpSession session = request.getSession();
             session.setAttribute("mail", email);
-    		response.sendRedirect(request.getContextPath() + "/TestServlet");
+    		response.sendRedirect(request.getContextPath() + "/Home");
 		} else {
-			logger.error("Données non complètes");
+			logger.error("Utilisateur non crée, formulaire incomplet");
     		response.sendRedirect(request.getContextPath() + "/SignUp");
 		}
 	}

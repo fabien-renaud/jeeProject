@@ -20,7 +20,7 @@ import fr.epsi.jeeProject.listeners.StartupListener;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/LoginServlet")
+@WebServlet("/Login")
 public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     public static final Logger logger = LogManager.getLogger(LoginServlet.class);
@@ -32,19 +32,18 @@ public class LoginServlet extends HttpServlet {
      */
     public LoginServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	logger.info("GET Login");
     	HttpSession session = request.getSession(); 
     	if (session.getAttribute("mail") != null) {
         	logger.info("Utilisateur déjà connecté, redirection en cours");
-    		response.sendRedirect(request.getContextPath() + "/TestServlet");
+    		response.sendRedirect(request.getContextPath() + "/Home");
     	} else {
-        	logger.info("Page de Login");
     		request.getRequestDispatcher("./WEB-INF/Login.jsp").forward(request, response);
     	}
     }
@@ -53,15 +52,16 @@ public class LoginServlet extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	logger.info("POST Login");
     	Utilisateur monUser = monUserDao.getUtilisateur(request.getParameter("mail"));
     	HttpSession session = request.getSession(); 
     	if(monUser.getPassord() != null && monUser.getPassord().equals(request.getParameter("password"))) {
         	logger.info("Connexion OK, redirection en cours"); 
             session.setAttribute("mail", request.getParameter("mail"));
-    		response.sendRedirect(request.getContextPath() + "/TestServlet");
+    		response.sendRedirect(request.getContextPath() + "/Home");
     	} else {
-        	logger.info("Connexion KO, veuillez réessayer");
-    		response.sendRedirect(request.getContextPath() + "/LoginServlet");
+        	logger.error("Connexion KO, veuillez réessayer");
+    		response.sendRedirect(request.getContextPath() + "/Login");
     	}
     }
 

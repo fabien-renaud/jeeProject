@@ -8,7 +8,7 @@
 <body>
 	<div class="blocWhite">
     <h1>Projet Jee</h1>
-    	<button onclick="location.href='./LoginServlet'" class="hotButton">
+    	<button onclick="location.href='./Login'" class="hotButton">
     	<p>Sign In</p>
     	</button>
     	<button onclick="location.href='./SignUp'" class="coldButton">

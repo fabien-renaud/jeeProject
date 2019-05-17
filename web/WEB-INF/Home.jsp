@@ -6,9 +6,9 @@
     <title>My JSP Page</title>
 </head>
 <body>
-<% out.println("Coucou");
-out.println(session.getAttribute("mail"));%>
-<br/>
-<a href="SignOut">Sign out</a>
+	<% out.println("Coucou");
+	out.println(session.getAttribute("mail"));%>
+	<br/>
+	<a href="SignOut">Sign out</a>
 </body>
 </html>

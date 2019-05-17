@@ -7,7 +7,7 @@
     <title>Login</title>
 </head>
 <body>
-<form method="POST" action="LoginServlet">
+<form method="POST" action="Login">
 	<label>
         <span>Mail : </span>
         <input name="mail" type="text" required placeholder="abc@email.com" />
