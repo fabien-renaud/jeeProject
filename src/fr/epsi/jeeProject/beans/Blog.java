@@ -14,6 +14,21 @@ public class Blog {
 	private Statut statut;
 	private List<Reponse> listOfReponses;
 	
+	public Blog() {
+		super();
+	}
+
+	public Blog(Integer id, String titre, String description, Utilisateur createur, Date dateCreation,
+			Date dateModification) {
+		super();
+		this.id = id;
+		this.titre = titre;
+		this.description = description;
+		this.createur = createur;
+		this.dateCreation = dateCreation;
+		this.dateModification = dateModification;
+	}
+	
 	public List<Reponse> getListOfReponses() {
 		return listOfReponses;
 	}
