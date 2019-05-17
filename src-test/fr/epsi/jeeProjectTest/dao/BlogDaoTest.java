@@ -57,8 +57,8 @@ class BlogDaoTest {
 
 		monBlog = monBlogDao.getBlog(9999);
 		assertEquals(monBlog.getTitre(), "titre");
-		monBlogDao.deleteBlog(9999);
+		monBlogDao.deleteBlog(myBlog);
 		monBlog = monBlogDao.getBlog(9999);
-		assertEquals(monBlog, null);
+		assertEquals(monBlog.getTitre(), null);
 	}
 }
